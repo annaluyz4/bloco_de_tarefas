@@ -256,3 +256,23 @@ h1 {
         width: 100% !important;
     }
 }
+/* AJUSTES PARA CELULAR (TELA PEQUENA) */
+@media (max-width: 600px) {
+    /* Deixa o título menor no celular para não quebrar o layout */
+    h1 {
+        font-size: 1.8rem !important; 
+    }
+
+    .bloco {
+        width: 90% !important;
+        margin: 10px auto !important;
+    }
+
+    .adicionar-tarefa {
+        flex-direction: column;
+    }
+
+    #tarefa {
+        width: 100% !important;
+    }
+}
