@@ -3,42 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BLOCO DE TAREFAS </title>
+    <title>BLOCO DE TAREFAS</title>
     <link rel="stylesheet" href="bloco.css">
 </head>
 <body>
-    <h1> ‧₊˚✩ ₊˚🫧 Minhas tarefas 🫧‧₊˚✩ ₊˚</h1>
+    <h1>‧₊˚✩ ₊˚🫧 Minhas tarefas 🫧‧₊˚✩ ₊˚</h1>
+    
     <div class="adicionar-tarefa">
-
-         <input type="text" id="tarefa" placeholder=" Digite uma tarefa..">
-
-        <button id="adicionar">
-         Adicionar･⁠｡ﾟ💿･⁠｡ﾟ
-         </button>
+        <input type="text" id="tarefa" placeholder="Digite uma tarefa..">
+        <button id="adicionar">Adicionar･⁠｡ﾟ💿･⁠｡ﾟ</button>
     </div>
 
-    <div id="lista-tarefas">
+    <!-- Container único para a lista de tarefas -->
+    <div class="container-lista">
+        <div id="lista-tarefas"></div>
+    </div>
 
-        <div id="lista-tarefas">
+    <!-- Barra de tarefas inferior -->
+    <div class="barra-tarefas">
+        <button class="botao-iniciar">Iniciar</button>
+        
+        <div class="atalhos-barra">
+            <button class="icone-atalho" title="Pasta">📁</button>
+            <button class="icone-atalho" title="Notas">📝</button>
+            <button class="icone-atalho" title="Música">🎵</button>
         </div>
+
+        <span class="assinatura-aero">Desenvolvido por Anna Luyza 🩵✨</span>
     </div>
+
     <script src="blocodenotas.js"></script>
-
-<div class="barra-tarefas">
-    <!-- Botão Iniciar com ícone -->
-    <button class="botao-iniciar">
-      Iniciar
-    </button>
-
-    <!-- Ícones de Atalhos Rápidos na Barra -->
-    <div class="atalhos-barra">
-        <button class="icone-atalho" title="Pasta">📁</button>
-        <button class="icone-atalho" title="Notas">📝</button>
-        <button class="icone-atalho" title="Música">🎵</button>
-    </div>
-
-    <!-- Assinatura e Relógio -->
-    <span class="assinatura-aero">Desenvolvido por Anna Luyza 🩵✨</span>
-</div>
 </body>
 </html>
