@@ -11,7 +11,7 @@
    1. FUNDO COM O GIF FRUTIGER AERO (CENTRALIZADO)
    ================================================ */
 body {
-    background: url('fundo.gif.gif') no-repeat center center fixed;
+    background: url('fundo.gif') no-repeat center center fixed;
     background-size: cover;
     
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
