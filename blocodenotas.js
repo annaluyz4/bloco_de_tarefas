@@ -1,19 +1,13 @@
-// pegar os elementos do HTML
-
+// Pegar os elementos do HTML
 const campoTarefa = document.getElementById("tarefa");
-
 const botaoAdicionar = document.getElementById("adicionar");
-
 const listaTarefas = document.getElementById("lista-tarefas");
-
-
-// funcao que adiciona a tarefa
 
 let tarefas = [];
 
+// Função que adiciona a tarefa
 function adicionarTarefa() {
-
-    const texto = campoTarefa.value;
+    const texto = campoTarefa.value.trim();
 
     if (texto === "") {
         return;
@@ -28,36 +22,28 @@ function adicionarTarefa() {
     campoTarefa.value = "";
 }
 
-
-// botão para chamar a função tarefa
-
+// Botão para chamar a função tarefa
 botaoAdicionar.addEventListener("click", adicionarTarefa);
 
-
-// mostrar as tarefas adicionadas
-
+// Mostrar as tarefas adicionadas
 function mostrarTarefas() {
-
     listaTarefas.innerHTML = "";
+    let bloco = null; // Declarado corretamente para evitar o travamento
 
     for (let i = 0; i < tarefas.length; i++) {
-
-        if (i % 4 === 0){
+        // Cria um novo bloco a cada 4 tarefas
+        if (i % 4 === 0) {
             bloco = document.createElement("div");
-
             bloco.classList.add("bloco");
 
-            //titulo do 2 bloco
             bloco.innerHTML = `
-                <button class="fechar-janela" onclick="excluirTarefa(${i})">X</button>
-                <h2>Bloco ${Math.floor(i / 4) + 1}</h2> 
+                <button class="fechar-janela" onclick="excluirBloco(${i})">X</button>
             `;
 
             listaTarefas.appendChild(bloco);
         }
 
         const tarefaDiv = document.createElement("div");
-
         tarefaDiv.classList.add("tarefas");
 
         tarefaDiv.innerHTML = `
@@ -68,23 +54,24 @@ function mostrarTarefas() {
             <button onclick="editarTarefa(${i})">✏️</button>
         `;
 
-        bloco.appendChild(tarefaDiv);
+        if (bloco) {
+            bloco.appendChild(tarefaDiv);
+        }
     }
 }
-function excluirTarefa(index) {
-    tarefas.splice(index, 1); // Remove a tarefa do array
-    mostrarTarefas();         // Atualiza o visual da tela
-}
 
+// Excluir bloco ou tarefa
+function excluirBloco(index) {
+    // Remove o bloco de 4 tarefas correspondente
+    tarefas.splice(index, 4); 
+    mostrarTarefas();         
+}
 
 // Atualizar o status do checkbox
 function atualizarStatus(index) {
     tarefas[index].marcada = !tarefas[index].marcada;
 }
 
-function atualizarStatus(index) {
-    tarefas[index].marcada = !tarefas[index].marcada;
-}
 // Função simples para editar a tarefa
 function editarTarefa(index) {
     const novoTexto = prompt("Editar tarefa:", tarefas[index].nome);
