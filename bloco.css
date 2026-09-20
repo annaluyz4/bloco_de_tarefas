@@ -35,6 +35,7 @@ h1 {
     margin-bottom: 30px;
     letter-spacing: 2px;
     text-transform: uppercase;
+    text-align: center; /* Garante que fica no meio */
 }
 
 /* ================================================
