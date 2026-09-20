@@ -7,22 +7,23 @@
     <link rel="stylesheet" href="bloco.css">
 </head>
 <body>
-    <h1>‧₊˚✩ ₊˚🫧 Minhas tarefas 🫧‧₊˚✩ ₊˚</h1>
-    
+
+    <h1>🪼⋆.ೃ_*:･ Minhas tarefas ⋆*:.ೃ_⋆🪼</h1>
+
     <div class="adicionar-tarefa">
         <input type="text" id="tarefa" placeholder="Digite uma tarefa..">
         <button id="adicionar">Adicionar･⁠｡ﾟ💿･⁠｡ﾟ</button>
     </div>
 
-    <!-- Container único para a lista de tarefas -->
-    <div class="container-lista">
-        <div id="lista-tarefas"></div>
-    </div>
+    <!-- Contentor onde o JavaScript vai injetar as tarefas -->
+    <div id="lista-tarefas"></div>
 
-    <!-- Barra de tarefas inferior -->
+    <!-- Barra de tarefas fixa no rodapé -->
     <div class="barra-tarefas">
-        <button class="botao-iniciar">Iniciar</button>
-        
+        <button class="botao-iniciar">
+            <img src="iniciar-icone.png" alt="" class="icone-menu"> Iniciar
+        </button>
+
         <div class="atalhos-barra">
             <button class="icone-atalho" title="Pasta">📁</button>
             <button class="icone-atalho" title="Notas">📝</button>
