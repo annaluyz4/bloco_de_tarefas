@@ -276,11 +276,11 @@ h1 {
 @media (max-width: 600px) {
     h1 {
         text-align: center !important;
-        font-size: 2rem !important; /* Diminui um bocadinho para caber sem quebrar mal */
+        font-size: 3rem !important; 
         width: 100%;
         display: block;
         padding: 0 10px;
-    }
+}
 }
 /* Organiza os itens da barra de tarefas lado a lado */
 .barra-tarefas {
