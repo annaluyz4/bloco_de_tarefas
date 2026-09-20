@@ -17,13 +17,12 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; /* Isso centraliza tudo na horizontal */
     justify-content: flex-start;
     padding: 40px 20px 80px 20px;
     min-height: 100vh;
     width: 100%;
 }
-
 /* ================================================
    2. TÍTULO GLOSSY (BRILHANTE)
    ================================================ */
