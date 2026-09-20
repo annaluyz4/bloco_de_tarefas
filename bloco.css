@@ -11,11 +11,11 @@
    1. FUNDO COM O GIF FRUTIGER AERO
    ================================================ */
 body {
-    background-image: url('https://i.pinimg.com/originals/96/c1/69/96c1694a1d5795352c38226788f218f2.gif');
+ body {
+    background-image: url('fundo.gif');
     background-size: cover;
-    background-position: center;
     background-attachment: fixed;
-    background-repeat: no-repeat;
+}
     
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
