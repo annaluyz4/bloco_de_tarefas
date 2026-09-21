@@ -1,6 +1,11 @@
 // ============================================
 // PEGAR OS ELEMENTOS DO HTML
 // ============================================
+let myArchives = JSON.parse(localStorage.getItem("bloco_de_tarefas")) || [];
+var idNovo = 1;
+function SaveLocalStorage() {
+    localStorage.setItem("bloco_de_tarefas", JSON.stringify(myArchives));
+}
 
 const campoTarefa = document.getElementById("tarefa");
 
