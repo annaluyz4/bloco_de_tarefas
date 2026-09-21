@@ -1,13 +1,4 @@
-// ============================================
-// PEGAR OS ELEMENTOS DO HTML
-// ============================================
-let myArchives = JSON.parse(localStorage.getItem("bloco_de_tarefas")) || [];
-var idNovo = 1;
 
-function SaveLocalStorage() {
-    localStorage.setItem("bloco_de_tarefas", JSON.stringify(myArchives));
-
-}
 let tarefas = myArchives;
 
 const campoTarefa = document.getElementById("tarefa");
@@ -15,13 +6,6 @@ const campoTarefa = document.getElementById("tarefa");
 const botaoAdicionar = document.getElementById("adicionar");
 
 const listaTarefas = document.getElementById("lista-tarefas");
-
-
-// ============================================
-// ARRAY QUE VAI ARMAZENAR AS TAREFAS
-// ============================================
-
-let tarefas = [];
 
 
 // ============================================
@@ -49,7 +33,7 @@ function adicionarTarefa() {
 
 
     // Mostra novamente as tarefas
-    SaveLocalStorage();
+  
     mostrarTarefas();
 
 
@@ -162,7 +146,7 @@ function excluirBloco(index) {
     tarefas.splice(index, 4);
 
     // Mostra novamente as tarefas
-    SaveLocalStorage();
+ 
     mostrarTarefas();
 }
 
@@ -196,7 +180,7 @@ function editarTarefa(index) {
     ) {
 
         tarefas[index].nome = novoTexto.trim();
-        SaveLocalStorage();
+    
         mostrarTarefas();
 
     }
