@@ -1,141 +1,175 @@
-// ============================================
-// AGUARDA O HTML CARREGAR ANTES DE EXECUTAR
-// ============================================
-document.addEventListener("DOMContentLoaded", function() {
 
-    // PEGAR OS ELEMENTOS DO HTML
-    const campoTarefa = document.getElementById("tarefa");
-    const botaoAdicionar = document.getElementById("adicionar");
-    const listaTarefas = document.getElementById("lista-tarefas");
+const campoTarefa = document.getElementById("tarefa");
 
-    // ARRAY QUE VAI ARMAZENAR AS TAREFAS
-    let tarefas = [];
+const botaoAdicionar = document.getElementById("adicionar");
 
-    // ============================================
-    // FUNÇÃO QUE ADICIONA A TAREFA
-    // ============================================
-    function adicionarTarefa() {
-        const texto = campoTarefa.value.trim();
+const listaTarefas = document.getElementById("lista-tarefas");
 
-        // Não deixa adicionar tarefa vazia
-        if (texto === "") {
-            return;
-        }
 
-        // Adiciona a tarefa no Array
-        tarefas.push({
-            nome: texto,
-            marcada: false
-        });
+//armazenar tarefa
+let tarefas = [];
 
-        // Mostra novamente as tarefas
-        mostrarTarefas();
 
-        // Limpa o campo
-        campoTarefa.value = "";
+// adicionar tarefa
+function adicionarTarefa() {
+
+    const texto = campoTarefa.value.trim();
+
+    // Não deixa adicionar tarefa vazia
+    if (texto === "") {
+        return;
     }
 
-    // ============================================
-    // BOTÃO PARA ADICIONAR A TAREFA
-    // ============================================
-    botaoAdicionar.addEventListener("click", adicionarTarefa);
 
-    // Também permite adicionar apertando a tecla "Enter" no teclado
-    campoTarefa.addEventListener("keypress", function(e) {
-        if (e.key === "Enter") {
-            adicionarTarefa();
-        }
+    // Adiciona a tarefa no Array
+    tarefas.push({
+    nome: texto,
+    marcada: false
+
     });
 
-    // ============================================
-    // MOSTRAR AS TAREFAS
-    // ============================================
-    window.mostrarTarefas = function() {
-        // Limpa a tela antes de montar novamente
-        listaTarefas.innerHTML = "";
 
-        // Variável que vai guardar o bloco atual
-        let bloco = null;
+    // Mostra novamente as tarefas
+    mostrarTarefas();
 
-        // Percorre todas as tarefas do Array
-        for (let i = 0; i < tarefas.length; i++) {
 
-            // ====================================
-            // CRIA UM NOVO BLOCO A CADA 4 TAREFAS
-            // ====================================
-            if (i % 4 === 0) {
-                bloco = document.createElement("div");
-                bloco.classList.add("bloco");
+    // Limpa o campo
+    campoTarefa.value = "";
+}
 
-                // Botão para excluir o bloco
-                bloco.innerHTML = `
-                    <button 
-                        class="fechar-janela"
-                        onclick="excluirBloco(${i})"
-                    >
-                        X
-                    </button>
-                `;
 
-                // Coloca o bloco dentro da lista
-                listaTarefas.appendChild(bloco);
-            }
 
-            // ====================================
-            // CRIA A TAREFA
-            // ====================================
-            const tarefaDiv = document.createElement("div");
-            tarefaDiv.classList.add("tarefas");
+// adicionar tarefa
 
-            tarefaDiv.innerHTML = `
-                <input 
-                    type="checkbox"
-                    ${tarefas[i].marcada ? "checked" : ""}
-                    onchange="atualizarStatus(${i})"
-                >
-                <span>
-                    ${tarefas[i].nome}
-                </span>
+botaoAdicionar.addEventListener("click", adicionarTarefa);
+
+
+
+// mostrar tarefas
+
+
+function mostrarTarefas() {
+
+    // Limpar a tela 
+    listaTarefas.innerHTML = "";
+    let bloco = null;
+
+    for (let i = 0; i < tarefas.length; i++) {
+
+
+        // a cada 4 tarefas, criar um novo blo
+
+        if (i % 4 === 0) {
+
+            bloco = document.createElement("div");
+
+            bloco.classList.add("bloco");
+
+
+            // Botão para excluir o bloco
+            bloco.innerHTML = `
                 <button 
-                    class="botao-editar"
-                    onclick="editarTarefa(${i})"
+                    class="fechar-janela"
+                    onclick="excluirBloco(${i})"
                 >
-                    ✏️
+                    X
                 </button>
             `;
 
-            // Coloca a tarefa dentro do bloco atual
-            if (bloco) {
-                bloco.appendChild(tarefaDiv);
-            }
-        }
-    }
 
-    // ============================================
-    // EXCLUIR BLOCO
-    // ============================================
-    window.excluirBloco = function(index) {
-        tarefas.splice(index, 4);
+            // Coloca o bloco dentro da lista
+            listaTarefas.appendChild(bloco);
+        }
+
+
+      
+        // cria a tarefa
+       
+
+        const tarefaDiv = document.createElement("div");
+
+        tarefaDiv.classList.add("tarefas");
+
+
+        tarefaDiv.innerHTML = `
+            
+            <input 
+                type="checkbox"
+                ${tarefas[i].marcada ? "checked" : ""}
+                onchange="atualizarStatus(${i})"
+            >
+
+            <span>
+                ${tarefas[i].nome}
+            </span>
+
+            <button 
+                class="botao-editar"
+                onclick="editarTarefa(${i})"
+            >
+                ✏️
+            </button>
+
+        `;
+
+
+        // Coloca a tarefa dentro do bloco atual
+        if (bloco) {
+
+            bloco.appendChild(tarefaDiv);
+
+        }
+
+    }
+}
+
+
+// ============================================
+// EXCLUIR BLOCO
+// ============================================
+
+function excluirBloco(index) {
+
+    // Remove 4 tarefas começando pelo índice informado
+    tarefas.splice(index, 4);
+
+    // Mostra novamente as tarefas
+    mostrarTarefas();
+}
+
+
+// ============================================
+// ATUALIZAR CHECKBOX
+// ============================================
+
+function atualizarStatus(index) {
+
+    tarefas[index].marcada = !tarefas[index].marcada;
+
+}
+
+
+// ============================================
+// EDITAR TAREFA
+// ============================================
+
+function editarTarefa(index) {
+
+    const novoTexto = prompt(
+        "Editar tarefa:",
+        tarefas[index].nome
+    );
+
+
+    if (
+        novoTexto !== null &&
+        novoTexto.trim() !== ""
+    ) {
+
+        tarefas[index].nome = novoTexto.trim();
+
         mostrarTarefas();
+
     }
 
-    // ============================================
-    // ATUALIZAR CHECKBOX
-    // ============================================
-    window.atualizarStatus = function(index) {
-        tarefas[index].marcada = !tarefas[index].marcada;
-    }
-
-    // ============================================
-    // EDITAR TAREFA
-    // ============================================
-    window.editarTarefa = function(index) {
-        const novoTexto = prompt("Editar tarefa:", tarefas[index].nome);
-
-        if (novoTexto !== null && novoTexto.trim() !== "") {
-            tarefas[index].nome = novoTexto.trim();
-            mostrarTarefas();
-        }
-    }
-
-});
+}
